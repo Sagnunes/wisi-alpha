@@ -12,6 +12,9 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index as indexPermission } from '@/routes/permissions';
+import { index as indexRoles } from '@/routes/roles';
+import { index as indexUsers } from '@/routes/users';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-vue-next';
@@ -27,13 +30,18 @@ const mainNavItems: NavItem[] = [
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Github Repo',
-        href: 'https://github.com/laravel/vue-starter-kit',
+        title: 'Users',
+        href: indexUsers().url,
         icon: Folder,
     },
     {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
+        title: 'Roles',
+        href: indexRoles().url,
+        icon: Folder,
+    },
+    {
+        title: 'Permissions',
+        href: indexPermission().url,
         icon: BookOpen,
     },
 ];

@@ -34,6 +34,12 @@ export interface User {
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;
+    can: Can
+}
+
+interface Can {
+    delete: boolean;
+    validate:boolean
 }
 
 export type BreadcrumbItemType = BreadcrumbItem;
