@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { userColumns } from '@/components/datatable-columns/rbac/user/columns';
+import DataTable from '@/components/DataTable.vue';
 import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem, User } from '@/types';
 import { Head } from '@inertiajs/vue3';
-import { userColumns } from '@/components/datatable-columns/rbac/user/columns';
 import { PropType } from 'vue';
-import DataTable from '@/components/DataTable.vue';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {

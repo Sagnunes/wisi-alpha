@@ -9,14 +9,16 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useForm } from '@inertiajs/vue3';
+import { router, useForm } from '@inertiajs/vue3';
 import { MoreHorizontal } from 'lucide-vue-next';
 import { ref } from 'vue';
 import { toast } from 'vue-sonner';
 
+import Status from '@/enums/Status';
+import { show } from '@/routes/user-role';
+import { update } from '@/routes/user-status';
 import { destroy } from '@/routes/users';
 import { User } from '@/types';
-
 const { user } = defineProps<{ user: User }>();
 
 const form = useForm({});
@@ -40,6 +42,18 @@ function submitDelete() {
         preserveState: true,
     });
 }
+
+function goToUpdateUserRolePage() {
+    router.get(show.url({ user }));
+}
+
+function updateUserStatus() {
+    form.patch(update.url(user), {
+        onSuccess: (e: object) => {
+            toast.success(e.props.flash.status);
+        },
+    });
+}
 </script>
 
 <template>
@@ -56,11 +70,17 @@ function submitDelete() {
             <DropdownMenuSeparator
                 v-if="Object.values(user.can).some(Boolean)"
             />
+            <DropdownMenuItem
+                v-if="user.can.validate && user.status.id !== Status.ACTIVE"
+                @click="updateUserStatus"
+                >Validate User</DropdownMenuItem
+            >
+            <DropdownMenuItem @click="goToUpdateUserRolePage"
+                >Assign Role</DropdownMenuItem
+            >
+
             <DropdownMenuItem @click="openDialog" v-if="user.can.delete"
                 >Delete User</DropdownMenuItem
-            >
-            <DropdownMenuItem v-if="user.can.validate"
-                >Validate User</DropdownMenuItem
             >
         </DropdownMenuContent>
     </DropdownMenu>

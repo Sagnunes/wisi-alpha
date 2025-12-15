@@ -15,7 +15,7 @@ import { MoreHorizontal } from 'lucide-vue-next';
 import { ref } from 'vue';
 import { toast } from 'vue-sonner';
 
-import {destroy} from '@/routes/permissions';
+import { destroy } from '@/routes/permissions';
 
 const { permission } = defineProps<{ permission: Permission }>();
 
@@ -27,10 +27,6 @@ function copy(id: number) {
 
 const goToEditPermissionPage = () => {
     router.get(route('roles.edit', permission.slug));
-};
-
-const goToEditRolePermissionPage = () => {
-    router.get(route('roles.permissions.edit', permission.slug));
 };
 
 const isOpen = ref(false);
@@ -61,10 +57,16 @@ function submitDelete() {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
             <DropdownMenuLabel>Ações</DropdownMenuLabel>
-            <DropdownMenuItem @click="copy(permission.id)"> Copy ID</DropdownMenuItem>
+            <DropdownMenuItem @click="copy(permission.id)">
+                Copy ID</DropdownMenuItem
+            >
             <DropdownMenuSeparator />
-            <DropdownMenuItem @click="goToEditPermissionPage">Edit Permission</DropdownMenuItem>
-            <DropdownMenuItem @click="openDialog">Delete Permission</DropdownMenuItem>
+            <DropdownMenuItem @click="goToEditPermissionPage"
+                >Edit Permission</DropdownMenuItem
+            >
+            <DropdownMenuItem @click="openDialog"
+                >Delete Permission</DropdownMenuItem
+            >
         </DropdownMenuContent>
     </DropdownMenu>
 
@@ -74,7 +76,9 @@ function submitDelete() {
         description="Tem certeza que deseja deseja eliminar a permissão. Este processo não pode ser desfeito. "
     >
         <template #submitButton>
-            <Button type="submit" @click="submitDelete" variant="destructive">Apagar</Button>
+            <Button type="submit" @click="submitDelete" variant="destructive"
+                >Apagar</Button
+            >
         </template>
     </Dialog>
 </template>

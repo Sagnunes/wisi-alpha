@@ -34,12 +34,18 @@ export interface User {
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;
-    can: Can
+    status: Status;
+    can: Can;
+}
+
+interface Status {
+    id: number;
+    name: string;
 }
 
 interface Can {
     delete: boolean;
-    validate:boolean
+    validate: boolean;
 }
 
 export type BreadcrumbItemType = BreadcrumbItem;

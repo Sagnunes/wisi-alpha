@@ -15,7 +15,7 @@ final readonly class GetUsers
 
     public function handle(): array
     {
-        $users = User::with('roles:id,name,slug')->orderBy('name')->get();
+        $users = User::with(['roles:id,name,slug','status'])->orderBy('name')->get();
 
         return $users->map(function (User $user) {
             return [

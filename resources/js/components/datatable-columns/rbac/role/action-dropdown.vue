@@ -28,7 +28,7 @@ const goToEditPermissionPage = () => {
 };
 
 const goToEditRolePermissionPage = () => {
-    router.get(show.url({role:role.slug}));
+    router.get(show.url({ role: role.slug }));
 };
 
 const isOpen = ref(false);

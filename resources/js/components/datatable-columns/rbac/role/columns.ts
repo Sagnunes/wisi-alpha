@@ -14,9 +14,13 @@ export const roleColumns: ColumnDef<Role>[] = [
                 Button,
                 {
                     variant: 'ghost',
-                    onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+                    onClick: () =>
+                        column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
-                () => ['Nome', h(ArrowUpDown, { class: 'ml-2 h-4 w-4 cursor-pointer' })],
+                () => [
+                    'Nome',
+                    h(ArrowUpDown, { class: 'ml-2 h-4 w-4 cursor-pointer' }),
+                ],
             );
         },
         cell: ({ row }) => h('div', row.getValue('name')),
@@ -36,7 +40,11 @@ export const roleColumns: ColumnDef<Role>[] = [
             const permissions = row.original.permissions;
             // Check if permissions is empty or undefined
             if (!permissions || permissions.length === 0) {
-                return h('div', { class: 'text-sm text-muted-foreground' }, 'Sem permissões');
+                return h(
+                    'div',
+                    { class: 'text-sm text-muted-foreground' },
+                    'Sem permissões',
+                );
             }
             return h(
                 'div',

@@ -6,8 +6,9 @@ import InputError from '@/components/InputError.vue';
 import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import AppLayout from '@/layouts/AppLayout.vue';
-import {index , store,destroy} from '@/routes/roles';
+import { destroy, index, store } from '@/routes/roles';
 import { type BreadcrumbItem } from '@/types';
 import { Role } from '@/types/rbac';
 import { Head, useForm } from '@inertiajs/vue3';
@@ -107,7 +108,7 @@ const submit = () => {
                             </template>
 
                             <div class="grid gap-2">
-                                <Label for="name">Name</Label>
+                                <Label>Name</Label>
                                 <Input
                                     id="name"
                                     class="mt-1 block w-full"

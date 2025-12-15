@@ -1,11 +1,11 @@
 import ActionDropdown from '@/components/datatable-columns/rbac/user/action-dropdown.vue';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { User } from '@/types';
+import { Role } from '@/types/rbac';
 import type { ColumnDef } from '@tanstack/vue-table';
 import { ArrowUpDown } from 'lucide-vue-next';
 import { h } from 'vue';
-import { User } from '@/types';
-import { Badge } from '@/components/ui/badge';
-import { Role } from '@/types/rbac';
 
 export const userColumns: ColumnDef<User>[] = [
     {
@@ -15,9 +15,13 @@ export const userColumns: ColumnDef<User>[] = [
                 Button,
                 {
                     variant: 'ghost',
-                    onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+                    onClick: () =>
+                        column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
-                () => ['Name', h(ArrowUpDown, { class: 'ml-2 h-4 w-4 cursor-pointer' })],
+                () => [
+                    'Name',
+                    h(ArrowUpDown, { class: 'ml-2 h-4 w-4 cursor-pointer' }),
+                ],
             );
         },
         cell: ({ row }) => h('div', row.getValue('name')),
@@ -37,7 +41,11 @@ export const userColumns: ColumnDef<User>[] = [
             const roles = row.original.roles;
             // Check if permissions is empty or undefined
             if (!roles || roles.length === 0) {
-                return h('div', { class: 'text-sm text-muted-foreground' }, 'No Roles Assign');
+                return h(
+                    'div',
+                    { class: 'text-sm text-muted-foreground' },
+                    'No Roles Assign',
+                );
             }
             return h(
                 'div',
@@ -56,6 +64,11 @@ export const userColumns: ColumnDef<User>[] = [
                 ),
             );
         },
+    },
+    {
+        id: 'status',
+        header: 'Status',
+        cell: ({ row }) => row.original.status.name,
     },
     {
         id: 'actions',

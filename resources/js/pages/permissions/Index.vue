@@ -6,18 +6,18 @@ import InputError from '@/components/InputError.vue';
 import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import AppLayout from '@/layouts/AppLayout.vue';
-import { dashboard } from '@/routes';
+import { destroy, store } from '@/routes/permissions';
 import { type BreadcrumbItem } from '@/types';
 import { Permission } from '@/types/rbac';
 import { Head, useForm } from '@inertiajs/vue3';
 import { PropType, ref } from 'vue';
-import { destroy, store } from '@/routes/permissions';
 import { toast } from 'vue-sonner';
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Permissions',
-        href: dashboard().url,
+        href: '',
     },
 ];
 

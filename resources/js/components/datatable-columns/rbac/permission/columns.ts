@@ -13,9 +13,13 @@ export const permissionColumns: ColumnDef<Permission>[] = [
                 Button,
                 {
                     variant: 'ghost',
-                    onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+                    onClick: () =>
+                        column.toggleSorting(column.getIsSorted() === 'asc'),
                 },
-                () => ['Nome', h(ArrowUpDown, { class: 'ml-2 h-4 w-4 cursor-pointer' })],
+                () => [
+                    'Nome',
+                    h(ArrowUpDown, { class: 'ml-2 h-4 w-4 cursor-pointer' }),
+                ],
             );
         },
         cell: ({ row }) => h('div', row.getValue('name')),
